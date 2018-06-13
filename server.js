@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 
-var patientDB = require('./Database/PatientDB');
+var patientDB = require('./database/patientDB');
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku

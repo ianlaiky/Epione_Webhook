@@ -1,4 +1,4 @@
-var dbcontroller = require('./databaseConfig');
+var dbcontroller = require('./database-config');
 
 
 
