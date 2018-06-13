@@ -4,6 +4,7 @@ const request = require('request');
 const app = express();
 
 var patientDB = require('./database/patientDB');
+//link to patient database
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
