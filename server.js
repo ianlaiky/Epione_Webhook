@@ -23,6 +23,7 @@ app.get('/',function(req,res) {
 
     //testing-remove later
     var sessionid = 'projects/epione-test/agent/2';
+    console.log(sessionid);
     //getPatientThru(sessionid);
 
 });
@@ -30,6 +31,7 @@ app.get('/',function(req,res) {
 //webhook post function
 app.post('/webhook',json_body_parser,function(req,res){
 
+    console.log('webhook');
     //get session id to determine patient
 
     //get intent,params
