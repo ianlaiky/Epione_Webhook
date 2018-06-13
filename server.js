@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 
-var patientDB = require('./database/patientDB');
+var patientDB = require('./database/patientdb');
 //link to patient database
 
 // set the port of our application
@@ -12,8 +12,6 @@ var port = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({extended:true}));
 //need this for bodyparser
 var json_body_parser = bodyParser.json();
-app.use(express.static(__dirname + '/database'));//need to allow express to expose file by default
-app.use(express.static(__dirname + '/DialogFlow'));//need to allow express to expose file by default
 
 //listen to server on port 3000
 app.listen(port,function() {
