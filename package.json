@@ -1,5 +1,5 @@
 {
-  "name": "epionedf_webhook",
+  "name": "epione-dialogflow",
   "version": "1.0.0",
   "description": "Webhook to connect to DialogFlow",
   "main": "server.js",
@@ -15,3 +15,4 @@
     "request": "^2.87.0"
   }
 }
+
