@@ -52,14 +52,16 @@ app.post('/webhook',json_body_parser,function(req,res){
  * @param sessionid 
  */
 
-function getPatientThru(sessionid) {  
+function getPatientIDThru(sessionid) {  
     //projects/epione-test/agent/intents/facd16aa-e3db-4de0-b26e-74f9c771e9b6
     //uncomment later
     //var str = req.body.session;
-    var str = sessionid;
-    var sessions = str.split("/");
+    var sessions = sessionid.split("/");
     //console.log("Patient ID: " + sessions[sessions.length - 1 ] );
     var patientid = sessions[sessions.length - 1 ];
     patientDB.getPatientThruID(patientid);
-
 }
+
+// git commit add . 
+// git commit -m "message"
+// git push remote origin
