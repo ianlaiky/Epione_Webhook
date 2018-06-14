@@ -25,6 +25,7 @@ app.get('/',function(req,res) {
     //testing-remove later
     var sessionid = 'projects/epione-test/agent/2';
     console.log(sessionid);
+    patientDB.getPatientThruID('2');
     //getPatientThru(sessionid);
 
 });
