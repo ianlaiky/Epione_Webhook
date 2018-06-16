@@ -44,12 +44,22 @@ app.post('/webhook',json_body_parser,function(req,res){
 
 });
 
-app.get('/patient',function(req,res){
+app.get('/getRequest',function(req,res){
     
-    patientDB.getPatientThruID('2');
-
-
+   
     console.log(req.query.parameter);
+
+    if(req.query.parameter.toString().toLowerCase()=="getPatientThruID".toLowerCase()){
+
+        let patientId = req.query.patientId.toString();
+
+        console.log(patientId);
+        patientDB.getPatientThruID('2');
+
+        
+    } 
+    
+
 
 });
 
