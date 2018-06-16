@@ -50,7 +50,7 @@ app.get('/getPatientThruID',function(req,res){
 
         console.log(patientId);
         let respond = patientDB.getPatientThruID(patientId);
-
+        console.log(respond);
         res.send(respond);
 
 
