@@ -44,6 +44,11 @@ app.post('/webhook',json_body_parser,function(req,res){
 
 })
 
+app.get('/patient',function(req,res){
+    
+    patientDB.getPatientThruID('2');
+})
+
 
 //TODO CONNECT TO DATABASE
 //AND DO RELAVENT CALLS TO OTHER API IF NEEDED
