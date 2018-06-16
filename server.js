@@ -16,7 +16,7 @@ var json_body_parser = bodyParser.json();
 //listen to server on port 3000
 app.listen(port,function() {
     console.log('Example app listening on port');
-})
+});
 
 app.get('/',function(req,res) {
     //res.send('Hello World');
@@ -42,12 +42,16 @@ app.post('/webhook',json_body_parser,function(req,res){
 
 
 
-})
+});
 
 app.get('/patient',function(req,res){
     
     patientDB.getPatientThruID('2');
-})
+
+
+    console.log(req.query.parameter);
+
+});
 
 
 //TODO CONNECT TO DATABASE
