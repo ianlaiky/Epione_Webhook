@@ -187,8 +187,39 @@ router.get('/getAllReminderByDate', function (req, res) {
 
 });
 
+router.get('/getAllReminderNoAdherence', function (req, res) {
+
+
+    reminderDB.getAllReminderNoAdherence(function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
 
 // Reminder END
+
+
+// MODIFICATION / UPDATE Statements
+
+
+
+router.get('/updateReminderPrescriptionTaken', function (req, res) {
+
+
+    reminderDB.updateReminderPrescriptionTaken(req.query.setAdhered.toString(),req.query.reminderId.toString() ,function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
+
 
 
 // END OF DATABASE

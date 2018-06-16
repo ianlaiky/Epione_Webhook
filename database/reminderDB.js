@@ -72,6 +72,40 @@ module.exports =
         });
 
 
+    },
+    getAllReminderNoAdherence: function(callback) {
+        var query = "SELECT * from reminder where adhered = false";
+        dbcontroller.query(query, function(err, rows) {
+
+            if (!err){
+                //convert to JSON format
+                var r = JSON.stringify(rows);
+                var result = JSON.parse(r);
+                console.log(result);
+                callback(null, result);
+            }
+            else
+                console.log('Error while performing Query.');
+        });
+
+
+    },
+    updateReminderPrescriptionTaken: function(adhered,reminderId,callback) {
+        var query = "UPDATE reminder SET adhered = ? WHERE reminderId = ?";
+        dbcontroller.query(query,[adhered,reminderId], function(err, rows) {
+
+            if (!err){
+                //convert to JSON format
+                var r = JSON.stringify(rows);
+                var result = JSON.parse(r);
+                console.log(result);
+                callback(null, result);
+            }
+            else
+                console.log('Error while performing Query.');
+        });
+
+
     }
 
 };
