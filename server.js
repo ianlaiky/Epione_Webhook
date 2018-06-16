@@ -4,6 +4,9 @@ const request = require('request');
 const app = express();
 
 var patientDB = require('./database/patientdb');
+var medicineDB = require('./database/medicinedb');
+var prescriptionDB = require('./database/prescriptiondb');
+var reminderDB = require('./database/reminderDB');
 //link to patient database
 
 // set the port of our application
@@ -43,14 +46,15 @@ app.post('/webhook', json_body_parser, function (req, res) {
 
 });
 
-app.get('/getPatientThruID', function (req, res) {
+// DATABASE
 
-    var patientId = req.query.patientId.toString();
 
-    console.log(patientId);
+// Patients
 
-    console.log("!@3");
-    patientDB.getPatientThruID("1", function (err, result) {
+app.get('/getAllPatient', function (req, res) {
+
+
+    patientDB.getAllPatient(function (err, result) {
         console.log(result);
 
         res.send(result)
@@ -59,6 +63,171 @@ app.get('/getPatientThruID', function (req, res) {
 
 
 });
+
+
+app.get('/getPatientThruID', function (req, res) {
+
+    var patientId = req.query.patientid.toString();
+
+    console.log(patientId);
+    patientDB.getPatientThruID(patientId, function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
+
+
+// Patients End
+
+//Medicine
+
+app.get('/getAllMedicine', function (req, res) {
+
+
+    medicineDB.getAllMedicine(function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
+
+
+app.get('/getAllMedicineById', function (req, res) {
+
+
+    medicineDB.getAllMedicineById(req.query.medId.toString(), function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
+
+//Medicine End
+
+// Prescription
+app.get('/getAllPrescription', function (req, res) {
+
+
+    prescriptionDB.getAllPrescription(function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
+
+app.get('/getAllPrescriptionById', function (req, res) {
+
+
+    prescriptionDB.getAllPrescriptionById(req.query.prescriptionId.toString(), function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
+
+app.get('/getAllPrescriptionByPatientId', function (req, res) {
+
+
+    prescriptionDB.getAllPrescriptionByPatientId(req.query.patientId.toString(), function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
+
+app.get('/getAllPrescriptionByMedId', function (req, res) {
+
+
+    prescriptionDB.getAllPrescriptionByMedId(req.query.medId.toString(), function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
+
+
+// Prescription ENd
+
+
+// Reminder
+
+app.get('/getAllReminder', function (req, res) {
+
+
+    reminderDB.getAllReminder(function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
+
+app.get('/getAllReminderById', function (req, res) {
+
+
+    reminderDB.getAllReminderById(req.query.reminderId.toString(), function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
+app.get('/getAllReminderByPatientId', function (req, res) {
+
+
+    reminderDB.getAllReminderByPatientId(req.query.patientId.toString(), function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
+app.get('/getAllReminderByDate', function (req, res) {
+
+
+    reminderDB.getAllReminderByDate(req.query.dateTake.toString(), function (err, result) {
+        console.log(result);
+
+        res.send(result)
+
+    });
+
+
+});
+
+
+// Reminder END
+
+
+// END OF DATABASE
 
 
 //TODO CONNECT TO DATABASE

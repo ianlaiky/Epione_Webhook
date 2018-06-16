@@ -22,6 +22,24 @@ module.exports =
                 else
                     console.log('Patient ID not found');
             });
+
+        },
+        getAllPatient: function (callback) {
+
+            var query = "SELECT * from patient";
+            dbcontroller.query(query, function (err, rows) {
+                if (!err) {
+                    //convert to JSON format
+                    var r = JSON.stringify(rows);
+                    var result = JSON.parse(r);
+                    console.log(result);
+                    callback(null, result);
+                    // return result;
+                }
+                else
+                    console.log('Patient ID not found');
+            });
+
         }
 
 

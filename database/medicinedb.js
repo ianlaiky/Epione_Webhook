@@ -4,20 +4,39 @@ var dbcontroller = require('./database-config');
 
 module.exports =
 {   //function name:function(){...}
-    getMedicine: function() {
+    getAllMedicine: function(callback) {
         
-        dbcontroller.query('SELECT * from medicine', function(err, rows, fields) {
+        dbcontroller.query('SELECT * from medicine', function(err, rows) {
+
             if (!err){
                 //convert to JSON format
                 var r = JSON.stringify(rows);
                 var result = JSON.parse(r);
                 console.log(result);
-              //console.log('The solution is: ', result[0].name);
+                callback(null, result);
             }
             else
               console.log('Error while performing Query.');
           });
           
-          dbcontroller.end();
+
+    },
+
+    getAllMedicineById: function(medId,callback) {
+        var query = "SELECT * from medicine where medId = ?";
+        dbcontroller.query(query,[medId], function(err, rows) {
+
+            if (!err){
+                //convert to JSON format
+                var r = JSON.stringify(rows);
+                var result = JSON.parse(r);
+                console.log(result);
+                callback(null, result);
+            }
+            else
+                console.log('Error while performing Query.');
+        });
+
+
     }
-}
+};
