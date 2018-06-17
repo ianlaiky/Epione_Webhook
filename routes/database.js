@@ -224,7 +224,7 @@ router.get('/updateReminderPrescriptionTaken', function (req, res) {
 router.get('/insertDataIntoReminder', function (req, res) {
 
 
-    reminderDB.insertDataIntoReminder(req.query.reminderId.toString(),req.query.dateTake.toString(),req.query.timeTake.toString(),req.query.patientId.toString(),req.query.prescriptionId.toString(),req.query.adhered.toString() ,function (err, result) {
+    reminderDB.insertDataIntoReminder(req.query.dateTake.toString(),req.query.timeTake.toString(),req.query.patientId.toString(),req.query.prescriptionId.toString(),req.query.adhered.toString() ,function (err, result) {
         console.log(result);
 
         res.send(result)
