@@ -106,6 +106,24 @@ module.exports =
         });
 
 
+    },
+
+    insertDataIntoReminder: function(reminderId,dateTake,timeTake,patientId,prescriptionId,adhered,callback) {
+        var query = "insert into reminder (reminderId,dateTake,timeTake,patientId,prescriptionId,adhered) values (?,?,?,?,?,?)";
+        dbcontroller.query(query,[reminderId,dateTake,timeTake,patientId,prescriptionId,adhered], function(err, rows) {
+
+            if (!err){
+                //convert to JSON format
+                var r = JSON.stringify(rows);
+                var result = JSON.parse(r);
+                console.log(result);
+                callback(null, result);
+            }
+            else
+                console.log('Error while performing Query.');
+        });
+
+
     }
 
 };
