@@ -120,6 +120,7 @@ module.exports =
                 }
                 else
                     console.log('Error while performing Query.');
+                    console.log(err);
                     // callback(err, 'Error while performing Query.');
 
             });
